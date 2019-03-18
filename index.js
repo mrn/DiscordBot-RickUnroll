@@ -8,7 +8,7 @@ var rrLinks = [/dQw4w9WgXcQ/i,/oHg5SJYRHA0/i,/DLzxrzFCyOs/i,/oVTPg9iicy4/i,/lXMs
 var detectedRickRoll = '<:[!]:> RICK ROLL DETECTED'
 var warningRickRoll = 'Don\'t open that! It\'s a Rick Roll link! _Never gonna let them Rick Roll you ..._'
 var detectedMokryLink = '<:[!]:> DETECTED MOKRY SENDING A URL'
-var warningMokry = 'Be careful when Mokry sends links! This one looks alright, I think it\'s save to open, but this guy is known for Rick Rolling.'
+var warningMokry = 'Be careful when Mokry sends links! This one looks alright, I think it\'s safe to open, but this guy is known for Rick Rolling. _Never gonna let them Rick Roll you ..._'
 
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}`);
@@ -23,10 +23,10 @@ client.on('message', msg => {
 	// console.log(msg.member.user.id);
 	// console.log('  ' + msg.content);
 
-	var msgURL = msg.content.match(/https?:\/\/[A-Za-z0-9]+\.[A-Za-z0-9]{2,}(?=\s|>|$)/i);
+	var msgURL = msg.content.match(/https?:\/\/[A-Za-z0-9]+\.\S{2,}(?=\s|>|$)/i);
 
 	if (msgURL) {
-		console.log('---- Message contains URL: ' + msgURL[0]);
+		console.log('---- MESSAGE CONTAINS URL: ' + msgURL[0]);
 	}
 
 	// first test
@@ -40,7 +40,7 @@ client.on('message', msg => {
 	}
 
 	// second test
-	if (!(isRickRoll) && msgURL) {
+	if (isRickRoll === false && msgURL) {
 		request({url: msgURL[0], followRedirect: false}, function(error, response, body) {
 			// console.log(response.statusCode);
 			if (response && response.statusCode >= 300 && response.statusCode < 400) {

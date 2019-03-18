@@ -4,7 +4,7 @@ const client = new Discord.Client();
 var request = require("request");
 
 const token = process.env.token;
-var rrLinks = [/https?:\/\/\S*Rick.*Astley\S*/i,/dQw4w9WgXcQ/i,/oHg5SJYRHA0/i,/DLzxrzFCyOs/i,/okqEVeNqBhc/i,/6_b7RDuLwcI/i,/V-_O7nl0Ii0/i,/TzXXHVhGXTQ/i,/https?:\/\/www.latlmes.com\/arts\/return-of-the-golden-age-of-comics-1/i,/dGeEuyG_DIc/i,/oVTPg9iicy4/i,/lXMskKTw3Bc/i,/SQoA_wjmE9w/i,/1IcSJ6K/i];
+var rrLinks = [/https?:\/\/\S*Rick.*Astley\S*/i,/dQw4w9WgXcQ/i,/oHg5SJYRHA0/i,/DLzxrzFCyOs/i,/okqEVeNqBhc/i,/6_b7RDuLwcI/i,/V-_O7nl0Ii0/i,/TzXXHVhGXTQ/i,/vLRyJ0dawjM/i,/dJRsWJqDjFE/i,/IdkCEioCp24/i,/jKLzwUggKDI/i,/cyMHZVT91Dw/i,/a9WHZ5M8I8w/i,/oXXLMOVYZs/i,/ghGoI7xVtSI/i,/IO9XlQrEt2Y/i,/hVPE47krnMY/i,/RRY4SVsGhLs/i,/AyOqGRjVtls/i,/https?:\/\/www.latlmes.com\/arts\/return-of-the-golden-age-of-comics-1/i,/dGeEuyG_DIc/i,/oVTPg9iicy4/i,/lXMskKTw3Bc/i,/SQoA_wjmE9w/i,/1IcSJ6K/i,/Gc2u6AFImn8/i,/aWkhsM699VY/i];
 var detectedRickRoll = '<:[!]:> RICK ROLL DETECTED'
 var warningRickRoll = 'Don\'t open that! It\'s a Rick Roll link! _Never gonna let them Rick Roll you ..._'
 var detectedMokryLink = '<:[!]:> DETECTED MOKRY SENDING A URL'

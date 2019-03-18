@@ -4,7 +4,7 @@ const client = new Discord.Client();
 var request = require("request");
 
 const token = process.env.token;
-var rrLinks = [/https?:\/\/\S*Rick.*Astley\S*/i,/dQw4w9WgXcQ/i,/oHg5SJYRHA0/i,/DLzxrzFCyOs/i,/okqEVeNqBhc/i,/6_b7RDuLwcI/i,/V-_O7nl0Ii0/i,/TzXXHVhGXTQ/i,/vLRyJ0dawjM/i,/dJRsWJqDjFE/i,/IdkCEioCp24/i,/jKLzwUggKDI/i,/cyMHZVT91Dw/i,/a9WHZ5M8I8w/i,/oXXLMOVYZs/i,/ghGoI7xVtSI/i,/IO9XlQrEt2Y/i,/hVPE47krnMY/i,/RRY4SVsGhLs/i,/AyOqGRjVtls/i,/https?:\/\/www.latlmes.com\/arts\/return-of-the-golden-age-of-comics-1/i,/dGeEuyG_DIc/i,/oVTPg9iicy4/i,/lXMskKTw3Bc/i,/SQoA_wjmE9w/i,/1IcSJ6K/i,/Gc2u6AFImn8/i,/aWkhsM699VY/i];
+var rrLinks = [/https?:\/\/\S*Rick.*Astley\S*/i,/https?:\/\/\S*Rick.*Roll\S*/i,/dQw4w9WgXcQ/i,/oHg5SJYRHA0/i,/DLzxrzFCyOs/i,/okqEVeNqBhc/i,/6_b7RDuLwcI/i,/V-_O7nl0Ii0/i,/TzXXHVhGXTQ/i,/vLRyJ0dawjM/i,/dJRsWJqDjFE/i,/IdkCEioCp24/i,/jKLzwUggKDI/i,/cyMHZVT91Dw/i,/a9WHZ5M8I8w/i,/oXXLMOVYZs/i,/ghGoI7xVtSI/i,/IO9XlQrEt2Y/i,/hVPE47krnMY/i,/RRY4SVsGhLs/i,/AyOqGRjVtls/i,/Fg9IjJSSMRQ/i,/8qnQz8kxte0/i,/o6piTG5EdhQ/i,/YwlVgpXXJS0/i,/kfUtindGZrI/i,/TMBN8hj5Jy0/i,/wCRae4Vrf2g/i,/In03wnfyVqc/i,/AxYRHsQDdIw/i,/SzZVg2qTddc/i,/j2bXq3Fadp0/i,/hpc0Lb14Nd0/i,/DD70oKDlemE/i,/DsC8jQXRbQE/i,/https?:\/\/www.latlmes.com\/arts\/return-of-the-golden-age-of-comics-1/i,/dGeEuyG_DIc/i,/oVTPg9iicy4/i,/lXMskKTw3Bc/i,/SQoA_wjmE9w/i,/1IcSJ6K/i,/Gc2u6AFImn8/i,/rbsPu1z3ugQ/i,/aWkhsM699VY/i,/epyRUp0BhrA/i,/rx6w3j7cWa0/i];
 var detectedRickRoll = '<:[!]:> RICK ROLL DETECTED'
 var warningRickRoll = 'Don\'t open that! It\'s a Rick Roll link! _Never gonna let them Rick Roll you ..._'
 var detectedMokryLink = '<:[!]:> DETECTED MOKRY SENDING A URL'

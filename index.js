@@ -4,11 +4,11 @@ const client = new Discord.Client();
 var request = require("request");
 
 const token = process.env.token;
-var rrLinks = [/dQw4w9WgXcQ/i,/oHg5SJYRHA0/i,/DLzxrzFCyOs/i,/oVTPg9iicy4/i,/lXMskKTw3Bc/i,/SQoA_wjmE9w/i,/1IcSJ6K/i];
+var rrLinks = [/https?:\/\/\S*Rick.*Astley\S*/i,/dQw4w9WgXcQ/i,/oHg5SJYRHA0/i,/DLzxrzFCyOs/i,/okqEVeNqBhc/i,/dGeEuyG_DIc/i,/oVTPg9iicy4/i,/lXMskKTw3Bc/i,/SQoA_wjmE9w/i,/1IcSJ6K/i];
 var detectedRickRoll = '<:[!]:> RICK ROLL DETECTED'
 var warningRickRoll = 'Don\'t open that! It\'s a Rick Roll link! _Never gonna let them Rick Roll you ..._'
 var detectedMokryLink = '<:[!]:> DETECTED MOKRY SENDING A URL'
-var warningMokry = 'Be careful when Mokry sends links! This one looks alright, I think it\'s safe to open, but this guy is known for Rick Rolling. _Never gonna let them Rick Roll you ..._'
+// var warningMokry = 'Be careful when Mokry sends links! This one looks alright, I think it\'s safe to open, but this guy is known for Rick Rolling. _Never gonna let them Rick Roll you ..._'
 
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}`);
@@ -56,14 +56,14 @@ client.on('message', msg => {
 		});
 	}
 
-	if (msg.member.user.id === '500382262882467851') {
-		isMokry = true;
-	}
+	// if (msg.member.user.id === '500382262882467851') {
+	// 	isMokry = true;
+	// }
 
-	if (!(isRickRoll) && isMokry && msgURL) {
-		console.log(detectedMokryLink);
-		msg.channel.send(warningMokry);
-	}
+	// if (!(isRickRoll) && isMokry && msgURL) {
+	// 	console.log(detectedMokryLink);
+	// 	msg.channel.send(warningMokry);
+	// }
 })
 
 client.login(token);

@@ -4,9 +4,11 @@ const client = new Discord.Client();
 var request = require("request");
 
 const token = process.env.token;
-var rrLinks = ['dQw4w9WgXcQ','oHg5SJYRHA0','DLzxrzFCyOs','oVTPg9iicy4','lXMskKTw3Bc','SQoA_wjmE9w','https://bit.ly/1IcSJ6K'];
-var rrDetected = 'Rick Roll detected'
-var rrWarning = 'Don\'t open that! It\'s a Rick Roll link!'
+var rrLinks = [/dQw4w9WgXcQ/i,/oHg5SJYRHA0/i,/DLzxrzFCyOs/i,/oVTPg9iicy4/i,/lXMskKTw3Bc/i,/SQoA_wjmE9w/i,/1IcSJ6K/i];
+var detectedRickRoll = '<:[!]:> RICK ROLL DETECTED'
+var warningRickRoll = 'Don\'t open that! It\'s a Rick Roll link! _Never gonna let them Rick Roll you ..._'
+var detectedMokryLink = '<:[!]:> DETECTED MOKRY SENDING A URL'
+var warningMokry = 'Be careful when Mokry sends links! This one looks alright, I think it\'s save to open, but this guy is known for Rick Rolling.'
 
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}`);
@@ -15,39 +17,52 @@ client.on('ready', () => {
 
 client.on('message', msg => {
 	var isRickRoll = false;
+	var isMokry = false;
 
-	var msgUrl = msg.content.match(/http\S*?(?=\s|>|$)/i);
-	if (msgUrl) {
-		console.log(msgUrl[0]);
+	// console.log('#' + msg.channel.name + ' - ' + msg.member.user.username + ' - ' + '(' + msg.member.user.id + ')' + ':');
+	// console.log(msg.member.user.id);
+	// console.log('  ' + msg.content);
+
+	var msgURL = msg.content.match(/https?:\/\/[A-Za-z0-9]+\.[A-Za-z0-9]{2,}(?=\s|>|$)/i);
+
+	if (msgURL) {
+		console.log('---- Message contains URL: ' + msgURL[0]);
 	}
 
 	// first test
 	for (var i = 0; i <= rrLinks.length - 1; i++) {
-		if (msg.content.includes(rrLinks[i])) {
+		if (rrLinks[i].test(msg.content)) {
 			isRickRoll = true;
-			console.log(rrDetected);
-			msg.channel.send(rrWarning);
+			console.log(detectedRickRoll);
+			msg.channel.send(warningRickRoll);
 			break;
 		}
 	}
-	// console.log(isRickRoll);
 
 	// second test
-	if (isRickRoll == false && msgUrl) {
-		request({url: msgUrl[0], followRedirect: false}, function(error, response, body) {
+	if (!(isRickRoll) && msgURL) {
+		request({url: msgURL[0], followRedirect: false}, function(error, response, body) {
 			// console.log(response.statusCode);
 			if (response && response.statusCode >= 300 && response.statusCode < 400) {
 				for (var i = 0; i <= rrLinks.length - 1; i++) {
-					if (response.headers.location.includes(rrLinks[i])) {
+					if (rrLinks[i].test(response.headers.location)) {
 						isRickRoll = true;
-						console.log(rrDetected);
-						msg.channel.send(rrWarning);
+						console.log(detectedRickRoll + ': ' + response.headers.location);
+						msg.channel.send(warningRickRoll);
 						break;
 					}
 				}
-				console.log(response.headers.location);
 			}
 		});
+	}
+
+	if (msg.member.user.id === '500382262882467851') {
+		isMokry = true;
+	}
+
+	if (!(isRickRoll) && isMokry && msgURL) {
+		console.log(detectedMokryLink);
+		msg.channel.send(warningMokry);
 	}
 })
 

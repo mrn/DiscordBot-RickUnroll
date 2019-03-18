@@ -4,7 +4,7 @@ const client = new Discord.Client();
 var request = require("request");
 
 const token = process.env.token;
-var rrLinks = [/https?:\/\/\S*Rick.*Astley\S*/i,/dQw4w9WgXcQ/i,/oHg5SJYRHA0/i,/DLzxrzFCyOs/i,/okqEVeNqBhc/i,/dGeEuyG_DIc/i,/oVTPg9iicy4/i,/lXMskKTw3Bc/i,/SQoA_wjmE9w/i,/1IcSJ6K/i];
+var rrLinks = [/https?:\/\/\S*Rick.*Astley\S*/i,/dQw4w9WgXcQ/i,/oHg5SJYRHA0/i,/DLzxrzFCyOs/i,/okqEVeNqBhc/i,/6_b7RDuLwcI/i,/dGeEuyG_DIc/i,/oVTPg9iicy4/i,/lXMskKTw3Bc/i,/SQoA_wjmE9w/i,/1IcSJ6K/i];
 var detectedRickRoll = '<:[!]:> RICK ROLL DETECTED'
 var warningRickRoll = 'Don\'t open that! It\'s a Rick Roll link! _Never gonna let them Rick Roll you ..._'
 var detectedMokryLink = '<:[!]:> DETECTED MOKRY SENDING A URL'
